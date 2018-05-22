@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DescripcionArtista"></activity>
+        <activity android:name=".DescripcionArtista" />
+        <activity android:name=".ActivityComentarios"></activity>
     </application>
 
 </manifest>

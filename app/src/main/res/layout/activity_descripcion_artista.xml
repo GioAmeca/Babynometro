@@ -138,7 +138,7 @@
            app:expandedTitleMarginEnd="64dp"
            app:expandedTitleMarginStart="48dp"
            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-           android:background="#333"
+           android:background="#ce620505"
            >
            <!-- as   -->
            <ImageView
@@ -148,7 +148,7 @@
                android:scaleType="fitXY"
                app:layout_collapseMode="parallax"
                android:id="@+id/photo"
-               android:alpha="0.5"
+               android:alpha="0.8"
                />
 
            <android.support.v7.widget.Toolbar
@@ -177,6 +177,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginRight="10dp"
         android:id="@+id/fab_add"
+        android:src="@mipmap/ic_comment"
         />
 
 

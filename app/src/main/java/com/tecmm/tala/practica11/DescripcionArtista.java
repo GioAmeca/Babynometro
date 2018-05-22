@@ -6,6 +6,7 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -78,6 +79,12 @@ public class DescripcionArtista extends AppCompatActivity {
         txtComentarios.setText(i.getStringExtra("comentarios"));
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        this.finish();
+        return super.onOptionsItemSelected(item);
+    }
 }
 
 
