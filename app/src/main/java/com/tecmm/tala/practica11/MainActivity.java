@@ -39,11 +39,17 @@ public class MainActivity extends AppCompatActivity {
         ar.setName("SASHA GREY");
         ar.setPhone("8787837873");
         ar.setRating(5);
+        ar.setLife("Artista que se dedica a escribir libros de ciencia y matematicas");
+        ar.setAltitude(83.65);
+        ar.setLatitude(-103.65);
         datos.add(ar);
         ar = new Artista();
         ar.setName("MIA KHALIFA");
         ar.setPhone("555555555");
         ar.setRating(4.3);
+        ar.setLife("Artistica / comentarista deportiva que no se le entiende");
+        ar.setAltitude(83.65);
+        ar.setLatitude(-103.65);
         datos.add(ar);
 
         llenarRecycler();

@@ -1,7 +1,9 @@
 package com.tecmm.tala.practica11;
 
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -61,7 +63,12 @@ public class AdaptorRecycler extends RecyclerView.Adapter
 
     @Override
     public void onItemClick(View view, int position) {
+
         Log.e("Posición", "" + position);
+
+        DescripcionArtista.crearInstancia((Activity) context,
+                datos.get(position));
+
     }
 
     public static class ViewHolderArtista extends RecyclerView.ViewHolder

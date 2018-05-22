@@ -10,7 +10,33 @@ public class Artista {
     private String phone;
     private byte[] photo;
     private double rating;
-    private String location;
+    private double altitude;
+    private double latitude;
+    private String life;
+
+    public double getAltitude() {
+        return altitude;
+    }
+
+    public void setAltitude(double altitude) {
+        this.altitude = altitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLife() {
+        return life;
+    }
+
+    public void setLife(String life) {
+        this.life = life;
+    }
 
     public long getId() {
         return id;
@@ -52,13 +78,6 @@ public class Artista {
         this.rating = rating;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
 
     @Override
     public String toString() {
@@ -68,7 +87,7 @@ public class Artista {
                 ", phone='" + phone + '\'' +
                 ", photo=" + Arrays.toString(photo) +
                 ", rating=" + rating +
-                ", location='" + location + '\'' +
+
                 '}';
     }
 
