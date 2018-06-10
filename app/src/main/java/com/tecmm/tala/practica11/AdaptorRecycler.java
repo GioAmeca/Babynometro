@@ -4,6 +4,8 @@ package com.tecmm.tala.practica11;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -50,7 +52,9 @@ public class AdaptorRecycler extends RecyclerView.Adapter
         holder.ratingBar.setRating((float)artista.getRating());
         if(artista.checarImagen())
         {
-            /// hacer algo
+            Bitmap bmp = BitmapFactory.decodeByteArray(artista.getPhoto(),0
+            , artista.getPhoto().length);
+            holder.cImage.setImageBitmap(bmp);
         } else {
             holder.cImage.setImageResource(R.drawable.img_none);
         }

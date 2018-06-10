@@ -1,5 +1,7 @@
 package com.tecmm.tala.practica11;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +14,11 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,8 +28,11 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView rv;
 
 
+
     // provisional
-    public static final List<Artista> datos = new ArrayList<>();
+    public List<Artista> datos ;
+
+    ProgressDialog dialog;
 
 
     @Override
@@ -34,25 +44,39 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
-        // Provisional
-        Artista ar = new Artista();
-        ar.setName("SASHA GREY");
-        ar.setPhone("8787837873");
-        ar.setRating(5);
-        ar.setLife("Artista que se dedica a escribir libros de ciencia y matematicas");
-        ar.setAltitude(83.65);
-        ar.setLatitude(-103.65);
-        datos.add(ar);
-        ar = new Artista();
-        ar.setName("MIA KHALIFA");
-        ar.setPhone("555555555");
-        ar.setRating(4.3);
-        ar.setLife("Artistica / comentarista deportiva que no se le entiende");
-        ar.setAltitude(83.65);
-        ar.setLatitude(-103.65);
-        datos.add(ar);
 
-        llenarRecycler();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        pedirRetrofit();
+    }
+
+    void pedirRetrofit() {
+        dialog = ProgressDialog.show(this,"", "Buscando datos"
+                                     ,true);
+        Retrofit retrofit = new Retrofit.Builder().
+                             baseUrl(RetrofitInterface.url)
+                               .addConverterFactory(GsonConverterFactory.create())
+                             .build();
+        RetrofitInterface inter = retrofit.create(RetrofitInterface.class);
+        Call<List<Artista>> peticion = inter.traerArtistitas();
+        peticion.enqueue(new Callback<List<Artista>>() {
+            @Override
+            public void onResponse(Call<List<Artista>> call, Response<List<Artista>> response) {
+                datos = response.body();
+                dialog.dismiss();
+                llenarRecycler();
+            }
+
+            @Override
+            public void onFailure(Call<List<Artista>> call, Throwable t) {
+
+                t.printStackTrace();
+            }
+        });
 
     }
 

@@ -2,6 +2,7 @@ package com.tecmm.tala.practica11;
 
 
 import java.util.Arrays;
+import java.util.List;
 
 public class Artista {
 
@@ -13,6 +14,8 @@ public class Artista {
     private double altitude;
     private double latitude;
     private String life;
+
+    private List<Comentarios> comments;
 
     public double getAltitude() {
         return altitude;
@@ -78,6 +81,13 @@ public class Artista {
         this.rating = rating;
     }
 
+    public List<Comentarios> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comentarios> comments) {
+        this.comments = comments;
+    }
 
     @Override
     public String toString() {
